@@ -11,9 +11,19 @@ public class Conexion {
 
     public static Connection getConnection() {
         try {
+            System.out.println("URL: " + URL);
+            System.out.println("USER: " + USER);
+
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+
+            Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            System.out.println("CONEXIÓN EXITOSA");
+
+            return con;
+
         } catch (Exception e) {
+            System.out.println("ERROR AL CONECTAR");
             e.printStackTrace();
             return null;
         }
